@@ -1,12 +1,15 @@
-import { AdminResource } from "@/components/admin-resource";
-import { getNotes } from "@/lib/data";
+import { AdminTable } from "@/components/admin-table";
+import { adminList } from "@/lib/admin-data";
 
 export default async function AdminNotesPage() {
-  const notes = await getNotes();
+  const notes = await adminList("notes", "updated_at");
   return (
-    <AdminResource
+    <AdminTable
       description="Write and publish notes from the work."
-      items={notes.map((note) => ({ title: note.title, description: note.excerpt, meta: note.readTime, status: note.status }))}
+      editBasePath="/admin/notes"
+      newPath="/admin/notes/new"
+      rows={notes.map((note: any) => ({ id: note.id, title: note.title, description: note.excerpt, meta: note.read_time, status: note.status }))}
+      table="notes"
       title="Notes"
     />
   );

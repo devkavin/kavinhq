@@ -9,12 +9,34 @@ type DbProject = Omit<Project, "techStack" | "keyFeatures" | "whatBuilt"> & {
   what_built: string;
 };
 
+type DbNote = Omit<Note, "readTime"> & {
+  read_time: string;
+};
+
+type DbService = Omit<Service, "sortOrder"> & {
+  sort_order: number;
+};
+
 function normalizeProject(project: DbProject): Project {
   return {
     ...project,
     techStack: project.tech_stack,
     keyFeatures: project.key_features,
     whatBuilt: project.what_built
+  };
+}
+
+function normalizeNote(note: DbNote): Note {
+  return {
+    ...note,
+    readTime: note.read_time
+  };
+}
+
+function normalizeService(service: DbService): Service {
+  return {
+    ...service,
+    sortOrder: service.sort_order
   };
 }
 
@@ -48,7 +70,7 @@ export async function getNotes() {
     .order("date", { ascending: false });
 
   if (error || !data) return notes.filter((note) => note.status === "published");
-  return data as Note[];
+  return (data as DbNote[]).map(normalizeNote);
 }
 
 export async function getNoteBySlug(slug: string) {
@@ -67,8 +89,5 @@ export async function getServices() {
     .order("sort_order", { ascending: true });
 
   if (error || !data) return services.filter((service) => service.status === "published");
-  return (data as (Service & { sort_order: number })[]).map((service) => ({
-    ...service,
-    sortOrder: service.sort_order
-  }));
+  return (data as DbService[]).map(normalizeService);
 }
