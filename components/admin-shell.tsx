@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BarChart3, FileText, FolderKanban, ImageIcon, Inbox, MessageSquareQuote, Settings, Wrench } from "lucide-react";
+import { signOutAdmin } from "@/app/admin/actions";
 import { Brand } from "@/components/brand";
 
 const adminNav = [
@@ -25,6 +26,11 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
             </Link>
           ))}
         </nav>
+        <form action={signOutAdmin} className="mt-6 border-t border-slate-800 pt-4">
+          <button className="w-full rounded-md border border-slate-800 px-3 py-2 text-left text-sm text-slate-400 transition hover:border-sky-300/35 hover:text-white" type="submit">
+            Sign out
+          </button>
+        </form>
       </aside>
       <div>{children}</div>
     </div>

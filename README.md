@@ -8,7 +8,8 @@ Minimal, premium personal brand and business portfolio website for Kavin HQ.
 - TypeScript
 - Tailwind CSS
 - shadcn/ui-style local components
-- Supabase PostgreSQL, Auth, and Storage
+- Supabase PostgreSQL and Storage
+- Password-protected admin area
 - React Hook Form
 - Zod
 - Framer Motion dependency available for subtle transitions
@@ -26,6 +27,8 @@ Copy `.env.example` to `.env.local` and fill in Supabase values:
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
+ADMIN_PASSWORD=
+ADMIN_SESSION_SECRET=
 ADMIN_EMAIL=kavindra.senanayake@gmail.com
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
@@ -48,7 +51,11 @@ The migration creates:
 - Public `media` storage bucket
 - RLS policies for public published reads, public contact inserts, and admin-only writes
 
-Admin access is limited by Supabase Auth email:
+Admin access is protected by `ADMIN_PASSWORD`. Set a strong password in local and Vercel environment variables.
+
+`ADMIN_SESSION_SECRET` signs the HTTP-only admin session cookie. Use a long random value in production.
+
+The admin identity is:
 
 ```text
 kavindra.senanayake@gmail.com
@@ -56,7 +63,7 @@ kavindra.senanayake@gmail.com
 
 ## Admin
 
-Visit `/admin` after signing in with Supabase Auth as the configured admin email. The dashboard includes management areas for projects, notes, services, testimonials, contact inquiries, media, and settings.
+Visit `/login`, enter the admin password, then manage content in `/admin`.
 
 Media uploads use Supabase Storage bucket `media`. Uploaded image URLs should be stored in the related content records.
 
