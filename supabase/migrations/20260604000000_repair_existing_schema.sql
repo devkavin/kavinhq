@@ -42,6 +42,11 @@ alter table public.services
   add column if not exists what_is_included text[] not null default '{}',
   add column if not exists deliverables text[] not null default '{}';
 
+alter table public.services
+  alter column description drop not null,
+  alter column details drop not null,
+  alter column icon drop not null;
+
 update public.services
 set short_description = coalesce(short_description, description),
     who_it_is_for = coalesce(who_it_is_for, details);
@@ -63,6 +68,38 @@ alter table public.projects
   add column if not exists github_url text,
   add column if not exists sort_order integer not null default 0;
 
+do $$
+begin
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'projects'
+      and column_name = 'tech_stack'
+      and data_type = 'ARRAY'
+  ) then
+    execute $sql$
+      alter table public.projects
+        alter column tech_stack type text
+        using array_to_string(tech_stack, ', ')
+    $sql$;
+  end if;
+end $$;
+
+alter table public.projects
+  alter column description drop not null,
+  alter column overview drop not null,
+  alter column problem drop not null,
+  alter column goal drop not null,
+  alter column what_built drop not null,
+  alter column tech_stack drop not null,
+  alter column key_features drop not null,
+  alter column result drop not null,
+  alter column lessons drop not null,
+  alter column image drop not null,
+  alter column gallery drop not null,
+  alter column year drop not null;
+
 update public.projects
 set excerpt = coalesce(excerpt, description),
     summary = coalesce(summary, overview),
@@ -79,6 +116,12 @@ alter table public.notes
   add column if not exists published_at timestamptz,
   add column if not exists seo_title text,
   add column if not exists seo_description text;
+
+alter table public.notes
+  alter column excerpt drop not null,
+  alter column date drop not null,
+  alter column read_time drop not null,
+  alter column image drop not null;
 
 do $$
 begin
@@ -151,6 +194,10 @@ alter table public.media_assets
   add column if not exists mime_type text,
   add column if not exists size_bytes bigint not null default 0,
   add column if not exists uploaded_by uuid references auth.users(id) on delete set null;
+
+alter table public.media_assets
+  alter column path drop not null,
+  alter column status drop not null;
 
 update public.media_assets
 set file_name = coalesce(file_name, path),

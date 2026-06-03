@@ -20,13 +20,10 @@ const CREDIBILITY_CHIPS = [
 ];
 
 const PROCESS_STEPS = [
-  { step: '01', title: 'Discover', desc: 'Understanding requirements, auditing systems, mapping business flows.' },
-  { step: '02', title: 'Plan', desc: 'Designing tech stacks, database schemas, and application architecture.' },
-  { step: '03', title: 'Design', desc: 'Framer/Figma wireframes focusing on high usability, clean typography.' },
-  { step: '04', title: 'Build', desc: 'Writing clean, typed, modular code with Next.js, Laravel, or C#.' },
-  { step: '05', title: 'Test', desc: 'Rigorous integration, validation, user flow and performance testing.' },
-  { step: '06', title: 'Deploy', desc: 'Configuring Vercel pipelines, Docker instances, or VPS builds.' },
-  { step: '07', title: 'Improve', desc: 'Monitoring telemetry, loading metrics, and continuous iterations.' },
+  { step: '01', title: 'Talk', desc: 'We discuss what you need, who it is for, your timeline, and the best way to move forward.' },
+  { step: '02', title: 'Build', desc: 'I design and develop the website or app, then share progress so you can review it along the way.' },
+  { step: '03', title: 'Launch', desc: 'I test the important pages and forms, publish the project, and connect the domain.' },
+  { step: '04', title: 'Support', desc: 'After launch, I help with fixes, small updates, and improvements as your needs change.' },
 ];
 
 export default async function HomePage() {
@@ -222,8 +219,8 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-3xl mb-16">
-            <p className="text-xs font-mono text-primary uppercase tracking-widest mb-2">// How We Operate</p>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">The Operational Pipeline</h2>
+            <p className="text-xs font-mono text-primary uppercase tracking-widest mb-2">// How Projects Work</p>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">A Simple Delivery Process</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

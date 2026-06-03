@@ -12,13 +12,10 @@ export const metadata: Metadata = {
 };
 
 const HOW_I_WORK = [
-  { step: '01', title: 'Discover & Align', desc: 'We audit your current platform, map out user workflows, and outline business specifications in a direct alignment session.' },
-  { step: '02', title: 'Technical Planning', desc: 'Design database schemas, cloud infrastructure pipelines, and API pathways before any code is written.' },
-  { step: '03', title: 'UX & Visual Mockups', desc: 'Develop wireframes and mockups that prioritize clarity, load speed, responsive sizing, and conversion.' },
-  { step: '04', title: 'Next.js / Laravel Code', desc: 'Write clean, typed codebase structures with comprehensive CSS design tokens and component testing.' },
-  { step: '05', title: 'QA & Stress Checks', desc: 'Conduct validations, performance audits, link health tests, and responsive layout validations.' },
-  { step: '06', title: 'Server / DNS Deploy', desc: 'Launch on cloud platforms like Vercel or Hetzner, configure SSL, secure keys, and link domains.' },
-  { step: '07', title: 'Optimize & Monitor', desc: 'Analyze early log files, monitor speed metrics, and schedule progressive refinements.' },
+  { step: '01', title: 'Talk', desc: 'We go over your idea, goals, audience, timeline, and what you need the project to do.' },
+  { step: '02', title: 'Build', desc: 'I create the website or app, keep the work focused, and share progress for your feedback.' },
+  { step: '03', title: 'Launch', desc: 'I test the project, publish it online, connect the domain, and make sure it works live.' },
+  { step: '04', title: 'Support', desc: 'I stay available for fixes, content updates, improvements, and next-step changes.' },
 ];
 
 const FAQS = [
@@ -180,8 +177,8 @@ export default async function ServicesPage() {
         {/* How I Work Section */}
         <div className="border-t border-border/20 pt-20 mb-24">
           <div className="max-w-3xl mb-16">
-            <p className="text-xs font-mono text-primary uppercase tracking-widest mb-2">// Procedural Guidelines</p>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">Operational Delivery Method</h2>
+            <p className="text-xs font-mono text-primary uppercase tracking-widest mb-2">// How Projects Work</p>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">A Simple Delivery Process</h2>
           </div>
 
           <div className="relative border-l border-border/40 pl-6 space-y-12 font-sans">
