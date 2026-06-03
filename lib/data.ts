@@ -1,6 +1,6 @@
 import { notes, projects, services } from "@/lib/seed-data";
 import { isSupabaseConfigured } from "@/lib/supabase";
-import { createServerSupabaseClient } from "@/lib/supabase-server";
+import { createPublicSupabaseClient } from "@/lib/supabase-public";
 import type { Note, Project, Service } from "@/lib/types";
 
 type DbProject = Omit<Project, "techStack" | "keyFeatures" | "whatBuilt"> & {
@@ -20,7 +20,8 @@ function normalizeProject(project: DbProject): Project {
 
 export async function getProjects() {
   if (!isSupabaseConfigured) return projects.filter((project) => project.status === "published");
-  const supabase = await createServerSupabaseClient();
+  const supabase = createPublicSupabaseClient();
+  if (!supabase) return projects.filter((project) => project.status === "published");
   const { data, error } = await supabase
     .from("projects")
     .select("*")
@@ -38,7 +39,8 @@ export async function getProjectBySlug(slug: string) {
 
 export async function getNotes() {
   if (!isSupabaseConfigured) return notes.filter((note) => note.status === "published");
-  const supabase = await createServerSupabaseClient();
+  const supabase = createPublicSupabaseClient();
+  if (!supabase) return notes.filter((note) => note.status === "published");
   const { data, error } = await supabase
     .from("notes")
     .select("*")
@@ -56,7 +58,8 @@ export async function getNoteBySlug(slug: string) {
 
 export async function getServices() {
   if (!isSupabaseConfigured) return services.filter((service) => service.status === "published");
-  const supabase = await createServerSupabaseClient();
+  const supabase = createPublicSupabaseClient();
+  if (!supabase) return services.filter((service) => service.status === "published");
   const { data, error } = await supabase
     .from("services")
     .select("*")

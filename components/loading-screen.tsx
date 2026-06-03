@@ -3,21 +3,17 @@
 import { useEffect, useState } from "react";
 
 export function LoadingScreen() {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    if (sessionStorage.getItem("kavinhq-loaded")) return;
-    setVisible(true);
-    const startedAt = Date.now();
+    if (sessionStorage.getItem("kavinhq-loaded")) {
+      setVisible(false);
+      return;
+    }
+
     const timer = window.setTimeout(() => {
-      const elapsed = Date.now() - startedAt;
-      window.setTimeout(
-        () => {
-          sessionStorage.setItem("kavinhq-loaded", "true");
-          setVisible(false);
-        },
-        Math.max(0, 680 - elapsed)
-      );
+      sessionStorage.setItem("kavinhq-loaded", "true");
+      setVisible(false);
     }, 1500);
 
     return () => window.clearTimeout(timer);
