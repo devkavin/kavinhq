@@ -1,82 +1,36 @@
-# Kavin HQ
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Minimal, premium personal brand and business portfolio website for Kavin HQ.
+## Getting Started
 
-## Stack
-
-- Next.js App Router
-- TypeScript
-- Tailwind CSS
-- shadcn/ui-style local components
-- Supabase PostgreSQL and Storage
-- Password-protected admin area
-- React Hook Form
-- Zod
-- Framer Motion dependency available for subtle transitions
-
-## Local Setup
+First, run the development server:
 
 ```bash
-npm install
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Copy `.env.example` to `.env.local` and fill in Supabase values:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
-ADMIN_PASSWORD=
-ADMIN_SESSION_SECRET=
-ADMIN_EMAIL=kavindra.senanayake@gmail.com
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-The app uses local seed data when Supabase variables are not configured, so `npm run build` can pass before the database is connected.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Supabase
+## Learn More
 
-Run the SQL migration in `supabase/migrations/20260603180000_initial_schema.sql`, then run `supabase/seed.sql`.
+To learn more about Next.js, take a look at the following resources:
 
-The migration creates:
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- `projects`
-- `notes`
-- `services`
-- `testimonials`
-- `contact_inquiries`
-- `media_assets`
-- `site_settings`
-- Public `media` storage bucket
-- RLS policies for public published reads, public contact inserts, and admin-only writes
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-Admin access is protected by `ADMIN_PASSWORD`. Set a strong password in local and Vercel environment variables.
+## Deploy on Vercel
 
-`ADMIN_SESSION_SECRET` signs the HTTP-only admin session cookie. Use a long random value in production.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-The admin identity is:
-
-```text
-kavindra.senanayake@gmail.com
-```
-
-## Admin
-
-Visit `/login`, enter the admin password, then manage content in `/admin`.
-
-Media uploads use Supabase Storage bucket `media`. Uploaded image URLs should be stored in the related content records.
-
-## Deployment To Vercel
-
-1. Push the repository to GitHub.
-2. Import the project in Vercel.
-3. Add the environment variables from `.env.example`.
-4. Run the Supabase migration and seed SQL.
-5. Deploy.
-
-## Build
-
-```bash
-npm run build
-```
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
