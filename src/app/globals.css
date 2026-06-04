@@ -1,33 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0F172A;
-  --foreground: #E5E7EB;
+  --background: #080C12;
+  --foreground: #F4F7FB;
   
-  --card: #111827;
-  --card-foreground: #F3F4F6;
+  --card: #0E1520;
+  --card-foreground: #F4F7FB;
   
-  --popover: #0F172A;
-  --popover-foreground: #E5E7EB;
+  --popover: #0B111A;
+  --popover-foreground: #F4F7FB;
   
-  --primary: #38BDF8;
-  --primary-foreground: #0F172A;
+  --primary: #2DD4BF;
+  --primary-foreground: #04111A;
   
-  --secondary: #1E293B;
-  --secondary-foreground: #E5E7EB;
+  --secondary: #151E2B;
+  --secondary-foreground: #E8EEF6;
   
-  --muted: #1E293B;
-  --muted-foreground: #94A3B8;
+  --muted: #151E2B;
+  --muted-foreground: #98A6B8;
   
-  --accent: #8B5CF6;
-  --accent-foreground: #FFFFFF;
+  --accent: #F59E0B;
+  --accent-foreground: #130D04;
   
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   
-  --border: #1E293B;
-  --input: #1E293B;
-  --ring: #38BDF8;
+  --border: #1D2837;
+  --input: #1D2837;
+  --ring: #2DD4BF;
   
   --radius: 0.5rem;
 }
@@ -56,10 +56,15 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
   }
 }
 
@@ -72,37 +77,37 @@
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(17, 24, 39, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(14, 21, 32, 0.76) 0%, rgba(9, 14, 22, 0.9) 100%);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.12);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(56, 189, 248, 0.25);
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.05);
+  border-color: rgba(45, 212, 191, 0.24);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
 }
 
 /* Background Cyber Grid & Dots */
 .grid-bg {
   background-image: 
-    linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(148, 163, 184, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
 .dots-bg {
-  background-image: radial-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(45, 212, 191, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Accent Glows */
 .glow-primary {
-  filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.35));
+  filter: drop-shadow(0 0 15px rgba(45, 212, 191, 0.32));
 }
 
 .glow-accent {
-  filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.35));
+  filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.28));
 }
 
 /* Scanner Animation */
@@ -123,7 +128,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #38BDF8, transparent);
+  background: linear-gradient(90deg, transparent, #2DD4BF, transparent);
   animation: scan 4s linear infinite;
   pointer-events: none;
 }
@@ -135,16 +140,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0F172A;
+  background: #080C12;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: #1D2837;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #38BDF8;
+  background: #2DD4BF;
 }
 
 /* Remove default focus outlines and use custom ring colors */
