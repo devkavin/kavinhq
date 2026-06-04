@@ -70,14 +70,14 @@ export default async function HomePage() {
             </p>
 
             <div className="mb-10 flex flex-col gap-3 sm:flex-row">
-              <Link href="/work">
+              <Link href="/contact">
                 <Button size="lg" className="w-full px-6 font-semibold sm:w-auto">
-                  View work
+                  Request a quote
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link href="/work">
                 <Button size="lg" variant="outline" className="w-full border-white/[0.12] bg-white/[0.02] px-6 sm:w-auto">
-                  Request a quote
+                  View work
                 </Button>
               </Link>
             </div>
