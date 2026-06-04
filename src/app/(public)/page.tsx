@@ -77,7 +77,7 @@ export default async function HomePage() {
               </Link>
               <Link href="/contact">
                 <Button size="lg" variant="outline" className="w-full border-white/[0.12] bg-white/[0.02] px-6 sm:w-auto">
-                  Start a project
+                  Request a quote
                 </Button>
               </Link>
             </div>
